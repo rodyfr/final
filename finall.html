@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rody | Web Designer</title>
+    
+    <!-- خط El Messiri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+            html {
+    scroll-behavior: smooth;
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            font-family: 'El Messiri', sans-serif;
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #D4AF37, #F4E4BC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            padding: 10px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: 0.4s;
+            font-size: 14px;
+        }
+
+        .nav-btn:hover {
+            background: #D4AF37;
+            color: #0a0a0a;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 8%;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content h1 {
+            font-family: 'El Messiri', sans-serif;
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 .gold {
+            background: linear-gradient(135deg, #D4AF37, #F4E4BC, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #999;
+            margin-bottom: 40px;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37, #B8941F);
+            color: #0a0a0a;
+            padding: 16px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.4s;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.5);
+        }
+
+        .projects {
+            padding: 120px 8%;
+        }
+
+        .section-label {
+            color: #D4AF37;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'El Messiri', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.5s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            background: #0a0a0a;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .project-info {
+            padding: 30px;
+        }
+
+        .project-tag {
+            color: #D4AF37;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .project-info h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .project-info p {
+            color: #777;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .project-link:hover {
+            gap: 15px;
+        }
+
+        .contact {
+            padding: 120px 8%;
+            text-align: center;
+            background: #111;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .contact h2 {
+            font-family: 'El Messiri', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #999;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .footer {
+            padding: 40px 8%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #555;
+            font-size: 14px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            z-index: 1000;
+            transition: 0.4s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            .hero-content h1 {
+                font-size: 42px;
+            }
+            .section-title {
+                font-size: 36px;
+            }
+            .contact h2 {
+                font-size: 36px;
+            }
+            .nav {
+                padding: 20px 5%;
+            }
+        }
+        .project-card {
+    background: #111;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.5s;
+    cursor: pointer;
+    will-change: transform;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) !important
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+    </style>
+    <title>RODY - مصممة مواقع للبراندات البناتية</title>
+    <meta name="description" content="بصمم مواقع فخمة وسريعة للبراندات البناتية. تصميم مينيمال يبيع فعلاً مش بس شكل حلو.">
+    <meta name="keywords" content="تصميم مواقع, مصممة مواقع, مواقع بناتية, تصميم مواقع القاهرة">
+</head>
+<body>
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0a0a0a; z-index: 9999; display: flex; align-items: center; justify-content: center; transition: 0.5s;">
+        <div style="font-size: 32px; font-weight: 700;">RODY<span style="color: #D4AF37;">.</span></div>
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => document.getElementById('loader').remove(), 500);
+            }, 1000);
+        });
+    </script>
+    <!-- Navbar -->
+    <nav class="nav">
+        <div class="logo">RODY<span>.</span></div>
+        <a href="https://wa.me/201021528577?text=شفت البورتفوليو بتاعك وعايزة موقع" class="nav-btn">تواصلي معي</a>
+    </nav>
+
+    <!-- Hero -->
+    <<section class="hero">
+        <div class="hero-content">
+            <h1 data-aos="fade-up">بصمم مواقع <span class="gold">فخمة</span><br>تليق بمشروعك</h1>
+            <p data-aos="fade-up" data-aos-delay="200">متخصصة في تصميم مواقع للبراندات البناتية. مينيمال، سريع، ويبيع فعلاً مش بس شكل حلو.</p>
+            <a href="#projects" class="hero-cta" data-aos="fade-up" data-aos-delay="400">شوفي شغلي</a>
+        </div>
+    </section>
+
+<!-- Projects -->
+<section class="projects" id="projects">
+    <div class="container">
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">مشاريع مختارة</h2>
+        
+        <div class="project-grid">
+            
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-img"><img src="makeup.jpg" alt="موقع متجر ميكاب"></div>
+                <div class="project-info">
+                    <div class="project-tag">E-Commerce</div>
+                    <h3>Beauty Store</h3>
+                    <p>متجر إلكتروني كامل للميكب. تصميم دارك مود فخم، سلة مشتريات، فلترة منتجات. زود مبيعات العميلة 60%</p>
+                    <a href="https://rodyfr.github.io/MAKEUP3/" target="_blank" class="project-link">عرض المشروع ←</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-img"><img src="spa.jpg" alt="تصميم موقع سبا"></div>
+                <div class="project-info">
+                    <div class="project-tag">Landing Page</div>
+                    <h3>Luxury Spa Landing</h3>
+                    <p>مشروع صفحة لسبا نسائي بتصميم هادي وفخم. فيها حجز مواعيد أونلاين على الواتساب.</p>
+                    <a href="https://rodyfr.github.io/spa/" target="_blank" class="project-link">عرض المشروع ←</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="project-img"><img src="asalah.jpeg" alt="متجر"></div>
+                <div class="project-info">
+                    <div class="project-tag">E-Commerce</div>
+                    <h3>Asalah Store</h3>
+                    <p>متجر إلكتروني كامل للمنتجات النسائية بتصميم دارك مود فخم.</p>
+                    <a href="https://rodyfr.github.io/mAKEUP/" target="_blank" class="project-link">عرض المشروع ←</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+</script>
+<script>
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('.nav');
+        if (window.scrollY > 50) {
+            nav.style.padding = '15px 8%';
+            nav.style.background = 'rgba(10, 10, 10, 0.95)';
+        } else {
+            nav.style.padding = '25px 8%';
+            nav.style.background = 'rgba(10, 10, 10, 0.7)';
+        }
+    });
+</script>
+<div class="cursor" style="width: 20px; height: 20px; border: 2px solid #D4AF37; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: 0.1s; transform: translate(-50%, -50%);"></div>
+
+<script>
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+    
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(1.5)');
+        el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+    });
+</script>
+
+<style>
+ * {
+    cursor: none !important;
+}
+</style>
+</body>
+</html>
